@@ -16,7 +16,7 @@ makeCacheMatrix <- function(x = matrix(numeric(),,)) {
 	}
 
 	x.inv <- NULL		## Start with a NULL value for the 
-					## cached inverse.
+				## cached inverse.
 
     	set <- function(y) {	## When the current matrix is changed,
 	     	x <<- y		## set the local one to the assigned one.
