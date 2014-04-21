@@ -20,29 +20,29 @@ makeCacheMatrix <- function(x = matrix(numeric(),,)) {
 
     	set <- function(y) {	## When the current matrix is changed,
 	     	x <<- y		## set the local one to the assigned one.
-      	x.inv <<- NULL	## The cached inverse isn't valid any
-    	}				## longer, so is set to NULL.
-					## Double headed assignment arrows
-					## are needed for main environment
-					## variables.
+      	x.inv <<- NULL		## The cached inverse isn't valid any
+    	}			## longer, so is set to NULL.
+				## Double headed assignment arrows
+				## are needed for main environment
+				## variables.
 
     	get <- function() {	## It just returns the value of the
-		x			## current matrix.
+		x		## current matrix.
 	}
 
     	set.inv <- function(computed.inv) {	## When a value for the
 		x.inv <<- computed.inv		## computed inverse is
-	}						## supplied, store it into
-							## the cache variable.
+	}					## supplied, store it into
+						## the cache variable.
 
     	get.inv <- function() {	## It just returns the value of the
-		x.inv			## cached inverse matrix.
+		x.inv		## cached inverse matrix.
 	}
 
     	list(				## It returns the result of the main
 		set = set,		## function: the list of the above
 		get = get,		## defined functions.
-        	set.inv = set.inv,## The first name is the name of the
+        	set.inv = set.inv,	## The first name is the name of the
         	get.inv = get.inv	## element in the list; the second is
     	)				## the corresponding function.
 }
@@ -53,11 +53,11 @@ cacheSolve <- function(x) {
 	## The argument is a matrix-with-cached-inverse object
 	## created with the makeCacheMatrix() function.
 
-	x.inv <- x$get.inv()	## Gets the (possible) cached inverse.
+	x.inv <- x$get.inv()		## Gets the (possible) cached inverse.
 
-    	if(!is.null(x.inv)) {	## Cached inverse found.
+    	if(!is.null(x.inv)) {		## Cached inverse found.
       	message("[cacheSolve] Getting cached data.")
-        	return(x.inv)	## Cached value returned, function exited.
+        	return(x.inv)		## Cached value returned, function exited.
     	} else {
 		message("[cacheSolve] Computing the inverse matrix.")
 	}
